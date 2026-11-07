@@ -1,7 +1,5 @@
 name: CI
 on: [push]
-env:
-  APP_NAME: fastapi-starter
 jobs:
   lint:
     name: Lint – Ruff
@@ -41,6 +39,8 @@ jobs:
           python-version: "3.13"
       - run: pip install -r requirements.txt -r requirements-dev.txt
       - name: Contextes
+        env:
+          APP_NAME: fastapi-starter
         run: |
           echo "App: ${{ env.APP_NAME }}"
           echo "Acteur: ${{ github.actor }}"
